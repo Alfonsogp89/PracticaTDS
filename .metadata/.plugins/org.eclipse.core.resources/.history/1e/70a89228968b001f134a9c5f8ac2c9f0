@@ -1,0 +1,85 @@
+/*
+ * Programa para empezar la tercera sesion despues de ver
+
+ * el tama�o de los componentes
+ */
+package prueba;
+import java.awt.Color;
+import java.awt.Dimension;
+
+import javax.swing.*;
+
+public class Inicio {
+	private JList<Elemento> lista;
+	private JPanel visor; //new
+	private JLabel personaje; //new
+	
+	public Inicio() {
+		JPanel pantalla;
+		JFrame ventana=new JFrame();
+		ventana.setSize(700,480);
+		ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		pantalla=new JPanel();
+		pantalla.setLayout(new BoxLayout(pantalla,BoxLayout.X_AXIS));
+		ventana.setContentPane(pantalla);
+			
+		JMenuBar menubar=new JMenuBar();
+		JMenu menuArchivo=new JMenu("Archivo");
+		JMenu menuEditar=new JMenu("Editar");
+		JMenuItem itemAbrir=new JMenuItem("Abrir");
+		JMenuItem itemCerrar=new JMenuItem("Cerrar");
+		JMenu itemSalir=new JMenu("Salir");
+		JMenuItem itemSalirya=new JMenuItem("Salir ya");
+		JMenuItem itemSalirluego=new JMenuItem("Salir en 30 seg");
+		
+		itemSalir.add(itemSalirya);
+		itemSalir.add(itemSalirluego);
+		
+		menuArchivo.add(itemAbrir);
+		menuArchivo.add(itemCerrar);
+		menuArchivo.add(new JSeparator());
+		menuArchivo.add(itemSalir);
+		
+		menubar.add(menuArchivo);
+		menubar.add(menuEditar);
+		
+		ventana.setJMenuBar(menubar);
+		
+		Elemento aux = new Elemento("SMV.png", "Mujer Maravlla", 50, 85, 85);
+		cajaIzquierda.add(aux);
+		
+		//Lista de valoers
+		lista=new JList<String>();
+		String[] valores=new String[] {"Pikachu", "Mujer Maravilla",
+				"Shongoku", "Emoji", "e1", "e2", "e3", "e4", "e5"};
+		DefaultListModel<Elemento> model=new DefaultListModel<String>();
+		
+		lista.setModel(model);
+		JScrollPane scroll=new JScrollPane(lista);
+		//nuevo
+		scroll.setMinimumSize(new Dimension(320,320));
+		scroll.setPreferredSize(new Dimension(320,320));
+		scroll.setMaximumSize(new Dimension(320,320));
+		scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		
+		pantalla.add(scroll);
+		
+		visor=new JPanel();
+		visor.setMinimumSize(new Dimension(380,480));
+		visor.setMaximumSize(new Dimension(380,480));
+		visor.setPreferredSize(new Dimension(380,480));
+		visor.setBackground(Color.PINK);
+		personaje=new JLabel();
+
+		visor.add(personaje);
+		
+		pantalla.add(visor);
+		ventana.setVisible(true);
+	}
+	public static void main(String[] args) {
+		Inicio ini=new Inicio();
+
+	}
+
+}

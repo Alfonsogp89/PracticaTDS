@@ -1,0 +1,27 @@
+package prueba;
+
+import java.awt.Color;
+import java.awt.Dimension;
+
+import javax.swing.BoxLayout;
+import javax.swing.JComponent;
+import javax.swing.JPanel;
+import javax.swing.border.TitledBorder;
+
+public class Elemento extends JPanel{
+	
+	public Elemento(String fileName, String nombre, int fu, int agi, int in) {
+		//Ordenar caja de izquierda a derecha
+		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+		fixSize(this,300,110);
+		this.setBackground(Color.WHITE);
+		this.setBorder(new TitledBorder(nombre));
+	}
+	
+	
+	private void fixSize(JComponent c, int x, int y) {
+		c.setMaximumSize(new Dimension(x,y));
+		c.setPreferredSize(new Dimension(x,y));
+		c.setMinimumSize(new Dimension(x,y));
+	}
+}
